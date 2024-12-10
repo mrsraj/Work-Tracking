@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.column{
+    width: 45%;
+    padding: 10%;
+    border: 2px solid #ccc;
+    min-height: 200px;
+}
+
+.item{
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
