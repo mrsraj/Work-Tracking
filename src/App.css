@@ -1,19 +1,60 @@
-.container{
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
     display: flex;
-    justify-content: space-between;
     padding: 10px;
+    margin: 5px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe, #9b59b6, #e74c3c);
+    height: auto;
+    gap: 8px;
+    overflow: hidden;
 }
 
-.column{
-    width: 45%;
-    padding: 10%;
+.column {
+    width: 35%;
+    padding: 10px;
     border: 2px solid #ccc;
-    min-height: 200px;
+    max-height: 87.5vh;
+    min-height: 87.5vh;
+    overflow: auto;
+    text-align: center;
+    scrollbar-width: none;
 }
 
-.item{
+.item {
     padding: 10px;
     margin-bottom: 10px;
     background-color: #f0f0f0;
     cursor: pointer;
+    width: 100%;
+}
+
+.taskButton {
+    position: sticky;
+    top: 0;
+    width: 96%;
+    background-color: aquamarine;
+    margin: 5px;
+    text-align: center;
+    z-index: 25px;
+}
+
+.addButton {
+    background-color: inherit;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.header {
+    text-align: center;
+    width: 99.3%;
+    padding: 10px;
+    margin: 5px 5px 0px 5px;
+    background-color: #2c3e50;
+    color: #ffffff;
 }
