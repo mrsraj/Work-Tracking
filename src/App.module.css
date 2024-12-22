@@ -1,0 +1,5 @@
+.app {
+    background: linear-gradient(135deg, #4facfe, #00f2fe, #9b59b6, #e74c3c);
+    padding: 5px;
+    height: 100vh;
+}

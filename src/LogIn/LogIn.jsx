@@ -1,38 +1,50 @@
-// // Importing necessary modules
-// import React from 'react';
-// import axios from 'axios';
-// import './LogIn.css'; // Importing the CSS file for styling
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import style from './Login.module.css';
 
-// const Login = () => {
-//     const clientId = "YOUR_GOOGLE_CLIENT_ID"; // Replace with your Google Client ID
+const LogIn = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const isAuthenticated = localStorage.getItem('token'); // Check token outside handleLogin
 
-//     const onSuccess = async (credentialResponse) => {
-//         try {
-//             const response = await axios.post('http://your-backend-url.com/api/auth/google', {
-//                 token: credentialResponse.credential,
-//             });
-//             console.log("Backend Response:", response.data);
-//         } catch (error) {
-//             console.error("Error logging in with Google:", error);
-//         }
-//     };
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/login/', {
+                username,
+                password,
+            });
+            localStorage.setItem('token', response.data.access);
+            setMessage('Login successful!');
+        } catch (error) {
+            setMessage('Login failed. Please check your credentials.');
+        }
+    };
 
-//     return (
-//         <GoogleOAuthProvider clientId={clientId}>
-//             <div className="login-container">
-//                 <div className="login-box">
-//                     <h2 className="login-title">Login</h2>
-//                     <GoogleLogin
-//                         onSuccess={onSuccess}
-//                         onError={() => {
-//                             console.log("Login Failed");
-//                         }}
-//                         useOneTap
-//                     />
-//                 </div>
-//             </div>
-//         </GoogleOAuthProvider>
-//     );
-// };
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setMessage('Logged out successfully.');
+    };
 
-// export default Login;
+    return (
+        <div className={style.login_container}>
+            <h2 className={style.login_logo}>Login</h2>
+            <form className={style.login_form} onSubmit={handleLogin}>
+                <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <button type="submit">Login</button>
+            </form>
+            {message && <p className={style.login_message}>{message}</p>}
+            <p>
+                Don't have an account?{" "}
+                <Link to={isAuthenticated ? "#" : "/register"} onClick={isAuthenticated ? handleLogout : null}>
+                    {isAuthenticated ? "LogOut" : "Register here"}
+                </Link>
+            </p>
+        </div>
+    );
+};
+
+export default LogIn;

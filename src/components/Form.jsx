@@ -2,36 +2,39 @@ import { useState } from "react";
 import style from './Form.module.css';
 
 function TaskAddForm({ createNewItem }) {
-    const [newItemName, setNewItemName] = useState('');
-    const [newItemDescription, setNewItemDescription] = useState('');
+    // Manage new task state
+    const [newItem, setNewItem] = useState({
+        title: "",
+        desc: "",
+        date: new Date().toLocaleDateString()
+    });
 
-    function handleTitleChange(e) {
-        setNewItemName(e.target.value);
+    // Handle input changes
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setNewItem((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     }
 
-    function handleDescriptionChange(e) {
-        setNewItemDescription(e.target.value);
-    }
-
+    // Handle form submission
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (newItemName.trim() === '' || newItemDescription.trim() === '') {
+        if (newItem.title.trim() === '' || newItem.desc.trim() === '') {
             alert('Task name and description cannot be empty');
             return;
         }
 
-        // Create a new item object
-        const newItem = {
-            id: Date.now(), // Generates a unique timestamp-based ID
-            name: newItemName,
-            description: newItemDescription,
-            date: new Date().toLocaleDateString()
-          };
-
+        // Call parent function to handle the new task
         createNewItem(newItem);
-        setNewItemName('');
-        setNewItemDescription('');
+
+        // Reset form
+        setNewItem({
+            title: "",
+            desc: "",
+        });
     }
 
     return (
@@ -40,21 +43,23 @@ function TaskAddForm({ createNewItem }) {
                 className={style.nameInput}
                 type="text"
                 name="title"
-                value={newItemName}
-                onChange={handleTitleChange}
+                value={newItem.title}
+                onChange={handleChange}
                 placeholder="Work Title"
                 required
             />
             <input
                 className={style.description}
                 type="text"
-                name="description"
-                value={newItemDescription}
-                onChange={handleDescriptionChange}
+                name="desc"
+                value={newItem.desc}
+                onChange={handleChange}
                 placeholder="Descriptions"
                 required
             />
-            <button type="submit" className={style.submitButton}>Add Task</button>
+            <button type="submit" className={style.submitButton}>
+                Add Task
+            </button>
         </form>
     );
 }
