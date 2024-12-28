@@ -17,3 +17,9 @@
     color: #ffffff;
     text-decoration: none;
 }
+
+.logout:hover{
+    background-color: red;
+    color: black;
+    cursor: pointer;
+}
