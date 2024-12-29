@@ -6,7 +6,7 @@ function TaskAddForm({ createNewItem }) {
     const [newItem, setNewItem] = useState({
         title: "",
         desc: "",
-        date: new Date().toLocaleDateString()
+        column: "column1",
     });
 
     // Handle input changes

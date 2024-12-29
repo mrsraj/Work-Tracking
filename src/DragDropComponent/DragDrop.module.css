@@ -5,16 +5,19 @@
 }
 
 .container {
+    width: 100%;
     display: flex;
     padding: 10px;
     margin: 5px;
     height: auto;
-    gap: 8px;
-    overflow: hidden;
+    justify-content: space-between;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
 }
 
 .column {
-    width: 35%;
+    min-width: 32%;
     padding: 10px;
     border: 2px solid #ccc;
     max-height: 87.5vh;
