@@ -5,7 +5,6 @@ import LogIn from '../LogIn/LogIn';
 import style from './Router.module.css'
 import DragDrop from '../DragDropComponent/DragDrop';
 import ShowGroup from '../components/ShowGroup';
-import Header from '../Header/Header';
 
 function RouterPage() {
     return (
