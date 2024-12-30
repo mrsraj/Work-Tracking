@@ -7,6 +7,7 @@ function TaskAddForm({ createNewItem }) {
         title: "",
         desc: "",
         column: "column1",
+        user: localStorage.getItem('token')
     });
 
     // Handle input changes

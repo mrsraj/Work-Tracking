@@ -12,8 +12,8 @@ function DragDrop() {
         column3: [],
     });
 
-    console.log("columns 2 = ",columns);
-    
+    console.log("columns 2 = ", columns);
+
 
     // Fetch tasks from the backend when the component mounts
     useEffect(() => {
@@ -99,7 +99,14 @@ function DragDrop() {
                     onDrop={(event) => onDrop(event, column)}
                     onDragOver={onDragOver}
                 >
+                    {
+                            column === "column1" ? 'Do' :
+                                column === "column2" ? 'Do_Ing' :
+                                    column === "column3" ? 'Done' :
+                                        null
+                        }
                     <div className={style.taskButton}>
+                        
                         {column === "column1" && (
                             <button
                                 onClick={handleShowForm}

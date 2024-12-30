@@ -8,7 +8,7 @@ const LogIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const {setLogin} = useMyContext()
+    const { setLogin } = useMyContext()
 
     const navigate = useNavigate();
 
@@ -20,6 +20,7 @@ const LogIn = () => {
                 password,
             });
             localStorage.setItem('token', response.data.access);
+            localStorage.setItem('user_id', response.data.user_id);
 
             if (response.statusText === "OK") {
                 setLogin(response.statusText)

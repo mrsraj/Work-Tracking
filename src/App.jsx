@@ -4,6 +4,8 @@ import Header from './Header/Header.jsx';
 import { ContextProvider, useMyContext} from './ContextAPIs/ContextApi.jsx'
 
 function App() {
+  console.log("user_id = ",localStorage.getItem('user_id'));
+  
   return (
     <div className={style.app}>
       <ContextProvider>

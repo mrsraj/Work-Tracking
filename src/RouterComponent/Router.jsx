@@ -5,6 +5,7 @@ import LogIn from '../LogIn/LogIn';
 import style from './Router.module.css'
 import DragDrop from '../DragDropComponent/DragDrop';
 import ShowGroup from '../components/ShowGroup';
+import ProtectedRoute from '../ProtectedRouter/ProtectRout';
 
 function RouterPage() {
     return (
@@ -13,8 +14,16 @@ function RouterPage() {
                 <Routes>
                     <Route path="/" element={<Register />} />
                     <Route path="/login" element={<LogIn />} />
-                    <Route path="/showgroup" element={<ShowGroup />} />
-                    <Route path="/workpage" element={<DragDrop />} />
+
+                    <Route path="/showgroup" element={
+                        <ProtectedRoute>
+                            <ShowGroup />
+                        </ProtectedRoute>} />
+
+                    <Route path="/workpage" element={<ProtectedRoute>
+                        <DragDrop />
+                    </ProtectedRoute>} />
+                    
                 </Routes>
             </Router>
         </div>

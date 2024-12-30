@@ -11,11 +11,12 @@ function Header() {
     let {logIn, setLogin} = useMyContext()
     console.log("logIn = ", logIn);
     
-    
     function handleLogout() {
         localStorage.removeItem('token');
-        setLogin();
-        alert("LogOut Successfull.")
+        localStorage.removeItem('user_id');
+        setLogin(); 
+        alert("Logout Successful.");
+        window.location.href = '/'; // Redirects to the home page
     }
 
     return (
@@ -23,6 +24,7 @@ function Header() {
             <div className={style.header}>
                 <div>Task Management App</div>
                 <div className={style.login} ><a href="/showgroup" className={style.login_btn}>Group</a></div>
+                <div className={style.login} ><a href="/workpage" className={style.login_btn}>workpage</a></div>
                 {logIn ?
                     <div className={style.logout} onClick={handleLogout}>LogOut</div>
                     :
