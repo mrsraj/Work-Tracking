@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import style from './DragDrop.module.css';
 import TaskAddForm from "../components/Form";
+import CardIcon from "./CardIcons";
 
 function DragDrop() {
 
     const [showTaskForm, setShowTaskForm] = useState(false);
+    const [cardIcons, setCardIcons] = useState(false);
+    const [clickedCardId, setClickedCardId] = useState(null);
+
     const [columns, setColumns] = useState({
         column1: [],
         column2: [],
@@ -89,6 +93,16 @@ function DragDrop() {
         event.preventDefault();
     };
 
+    function showCardDetails(id) {
+        console.log("Card id = ", id);
+
+    }
+
+    const handleShowCardIcons = (itemId) => {
+        setClickedCardId((prevId) => (prevId === itemId ? null : itemId)); // Toggle visibility
+        setCardIcons(!cardIcons);
+    };
+
     return (
         <div className={style.container}>
 
@@ -100,13 +114,13 @@ function DragDrop() {
                     onDragOver={onDragOver}
                 >
                     {
-                            column === "column1" ? 'Do' :
-                                column === "column2" ? 'Do_Ing' :
-                                    column === "column3" ? 'Done' :
-                                        null
-                        }
+                        column === "column1" ? 'Do' :
+                            column === "column2" ? 'Do_Ing' :
+                                column === "column3" ? 'Done' :
+                                    null
+                    }
                     <div className={style.taskButton}>
-                        
+
                         {column === "column1" && (
                             <button
                                 onClick={handleShowForm}
@@ -131,10 +145,22 @@ function DragDrop() {
                             onDragStart={(event) => onDragStart(event, item, column)}
                             className={style.item}
                             key={id}
+                            onClick={() => showCardDetails(item.id)}
                         >
+                            <button className={style.Item_del} onClick={(e) => {
+                                // e.stopPropagation(); // Prevent parent click handler
+                                handleShowCardIcons(item.id);
+                            }}>....</button>
+
+                            {
+                                cardIcons && clickedCardId === item.id &&
+                                <CardIcon />
+                            }
+
                             <h3>{item.title}</h3>
                             {item.desc && <p>{item.desc}</p>}
                             {item.date && <p>{item.date}</p>}
+
                         </div>
                     ))}
 

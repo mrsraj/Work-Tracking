@@ -51,3 +51,16 @@
     padding: 10px;
     cursor: pointer;
 }
+
+.Item_del {
+    border: none;
+    float: right;
+    font-size: large;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.Item_del:hover {
+    background-color: rgb(190, 194, 193);
+}
