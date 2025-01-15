@@ -6,7 +6,6 @@ const MyContext = createContext(null);
 // Context Provider component
 function ContextProvider({ children }) {
     const [logIn, setLogin] = useState(localStorage.getItem('user_id'));
-    const [isAuthenticated, setAuthenticated] = useState(null);
     const [cardId, setCardId] = useState()
 
     return (
