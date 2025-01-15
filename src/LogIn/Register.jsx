@@ -36,7 +36,7 @@ const Register = () => {
                 <button type="submit">Register</button>
             </form>
             {message && <p className={style.register_message}>{message}</p>}
-            <p>Already have an account? <Link to="/login">Login here</Link></p> {/* Link to Login */}
+            <p>Already have an account? <Link to="/">Login here</Link></p> {/* Link to Login */}
         </div>
     );
 };

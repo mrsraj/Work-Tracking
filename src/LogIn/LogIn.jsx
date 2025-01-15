@@ -46,7 +46,7 @@ const LogIn = () => {
             {message && <p className={style.login_message}>{message}</p>}
             <p>
                 Don't have an account?{" "}
-                <Link to="/" >
+                <Link to="/register" >
                     Register here
                 </Link>
             </p>
