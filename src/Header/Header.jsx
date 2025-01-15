@@ -23,7 +23,7 @@ function Header() {
         <>
             <div className={style.header}>
                 <div>Task Management App</div>
-                <div className={style.login} ><a href="/showgroup" className={style.login_btn}>Group</a></div>
+                <div className={style.login} ><a href="/showgroup" className={style.login_btn}>TeamSpace</a></div>
                 <div className={style.login} ><a href="/workpage" className={style.login_btn}>workpage</a></div>
                 {logIn ?
                     <div className={style.logout} onClick={handleLogout}>LogOut</div>
