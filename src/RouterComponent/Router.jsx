@@ -6,6 +6,7 @@ import style from './Router.module.css'
 import DragDrop from '../DragDropComponent/DragDrop';
 import ShowGroup from '../components/ShowGroup';
 import ProtectedRoute from '../ProtectedRouter/ProtectRout';
+import NotFound from '../NotificationCom/NotFound';
 
 function RouterPage() {
     return (
@@ -23,7 +24,9 @@ function RouterPage() {
                     <Route path="/workpage" element={<ProtectedRoute>
                         <DragDrop />
                     </ProtectedRoute>} />
-                    
+
+                    <Route path="*" element={<NotFound />} />
+
                 </Routes>
             </Router>
         </div>
