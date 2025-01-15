@@ -12,7 +12,6 @@ function ContextProvider({ children }) {
         <MyContext.Provider
             value={{
                 setLogin, logIn,
-                isAuthenticated, setAuthenticated,
                 cardId, setCardId
             }}
         >
