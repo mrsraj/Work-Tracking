@@ -28,7 +28,6 @@ const LogIn = () => {
                 setUsername('');
                 setPassword('');
                 navigate('/showgroup');
-
             }
         } catch (error) {
             setMessage('Login failed. Please check your credentials.');
