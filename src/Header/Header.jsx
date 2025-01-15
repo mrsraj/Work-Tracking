@@ -5,7 +5,6 @@ import { useMyContext } from '../ContextAPIs/ContextApi';
 
 function Header() {
 
-    const [isAuthenticated, setAuthenticated] = useState(localStorage.getItem('token'))
     console.log('PostContext = ',useMyContext());
 
     let {logIn, setLogin} = useMyContext()
