@@ -1,13 +1,12 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useMyContext } from '../ContextAPIs/ContextApi';
 
 function ProtectedRoute({ children }) {
-    const { isAuthenticated } = useMyContext();
+    let isAuth = localStorage.getItem('user_id');
 
-    console.log("isAuthenticated = ", isAuthenticated);
+    console.log("isAuthenticated = ", isAuth);
 
-    return isAuthenticated ? children : <Navigate to="/" />;
+    return isAuth ? children : <Navigate to="/" />;
 }
 
 export default ProtectedRoute;
