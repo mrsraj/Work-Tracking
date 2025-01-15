@@ -21,7 +21,6 @@ const LogIn = () => {
             });
             localStorage.setItem('token', response.data.access);
             localStorage.setItem('user_id', response.data.user_id);
-            setAuthenticated(localStorage.getItem('user_id'))
 
             if (response.statusText === "OK") {
                 setLogin(response.statusText)
