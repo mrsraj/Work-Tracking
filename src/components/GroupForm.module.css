@@ -7,6 +7,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
     font-family: Arial, sans-serif;
     padding: 10px;
+    height: auto;
 }
 
 .register_form {
