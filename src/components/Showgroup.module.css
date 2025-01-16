@@ -52,3 +52,18 @@
     background-color: #555;
     height: 0;
 }
+
+.GroupAddForm{
+    position: fixed;
+    width: 98%;
+    height: 90vh;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.crossbtn{
+    float: right;
+}

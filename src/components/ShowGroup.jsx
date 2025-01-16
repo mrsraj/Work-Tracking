@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import style from './Showgroup.module.css';
 import GroupAddForm from "./GroupForm";
+import { useMyContext } from "../ContextAPIs/ContextApi";
 
 
 function ShowGroup() {
-
-    const [formShow, setFormShow] = useState(false);
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
+
+    const{formShow, setFormShow} = useMyContext()
 
     function FormShowHide() {
         setFormShow(!formShow);
@@ -55,7 +56,9 @@ function ShowGroup() {
                 <span className={style.plussign}>+</span>
             </div>
             {
-                formShow && <GroupAddForm />
+                formShow && <div className={style.GroupAddForm}>
+                    <GroupAddForm />
+                </div>
             }
 
             {data ? (

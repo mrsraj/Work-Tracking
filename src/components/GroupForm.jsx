@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import style from './GroupForm.module.css'; // Import the CSS file
+import { useMyContext } from '../ContextAPIs/ContextApi';
 
 const GroupAddForm = () => {
+
+    const{formShow, setFormShow} = useMyContext()
+
     const [formData, setFormData] = useState({
         groupname: '',
         work: '',
@@ -15,6 +19,9 @@ const GroupAddForm = () => {
         }));
     };
 
+    function FormShowHide() {
+        setFormShow(!formShow);
+    }
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -30,7 +37,8 @@ const GroupAddForm = () => {
 
     return (
         <div className={style.register_container}>
-            <h2 className={style.header}>Make Group</h2>
+            <button className={style.btn_close} onClick={FormShowHide}>X</button>
+            <h2 className={style.header}>New Team</h2>
             <form className={style.register_form} onSubmit={handleRegister}>
 
                 <input

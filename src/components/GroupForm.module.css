@@ -1,13 +1,12 @@
 .register_container {
-    max-width: 400px;
+    width: 400px;
     background-color: #f9f9f9;
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.5); /* Transparent border */
-    background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
+    background-color: rgba(255, 255, 255, 1); /* Fully transparent background */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
     font-family: Arial, sans-serif;
     padding: 10px;
-    height: auto;
 }
 
 .register_form {
@@ -54,4 +53,12 @@
 
 .header{
     text-align: center;
+}
+
+.btn_close{
+    float: right;
+    cursor: pointer;
+    background-color: transparent;
+    font: 25px;
+    border: none;
 }
