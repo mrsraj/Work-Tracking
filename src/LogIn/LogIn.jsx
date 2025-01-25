@@ -45,10 +45,10 @@ const LogIn = () => {
                 <input type="text" placeholder="Username"
                     value={username} onChange={(e) => setUsername(e.target.value)} required />
 
-                <div><input type="password"
+                <input type="password"
                     placeholder="Password" value={password}
-                    onChange={(e) => setPassword(e.target.value)} required /></div>
-
+                    onChange={(e) => setPassword(e.target.value)} required />
+                    
                 <button type="submit">Login</button>
             </form>
             {message && <p className={style.login_message}>{message}</p>}
