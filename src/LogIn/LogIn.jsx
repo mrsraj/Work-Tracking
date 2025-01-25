@@ -8,7 +8,7 @@ const LogIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const { setLogin,setAuthenticated } = useMyContext()
+    const { setLogin } = useMyContext()
 
     const navigate = useNavigate();
 
@@ -32,14 +32,23 @@ const LogIn = () => {
         } catch (error) {
             setMessage('Login failed. Please check your credentials.');
         }
+
+        setTimeout(() => {
+            setMessage('');
+        }, 3000);
     };
 
     return (
         <div className={style.login_container}>
             <h2 className={style.login_logo}>LogIn</h2>
             <form className={style.login_form} onSubmit={handleLogin}>
-                <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input type="text" placeholder="Username"
+                    value={username} onChange={(e) => setUsername(e.target.value)} required />
+
+                <div><input type="password"
+                    placeholder="Password" value={password}
+                    onChange={(e) => setPassword(e.target.value)} required /></div>
+
                 <button type="submit">Login</button>
             </form>
             {message && <p className={style.login_message}>{message}</p>}
