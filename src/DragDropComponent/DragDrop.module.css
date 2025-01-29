@@ -64,3 +64,9 @@
 .Item_del:hover {
     background-color: rgb(190, 194, 193);
 }
+
+.icon_btn{
+    position: absolute;
+    left: 155px;
+    /* top: 10px; */
+}
