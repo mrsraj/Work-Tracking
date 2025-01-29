@@ -1,13 +1,18 @@
-.icon_container{
+/* .icon_container{
     display: flex;
     flex-direction: column;
     z-index: 10;
-    height: 100%;
-}
+    float: right; 
+    align-items: flex-end;
+} */
 
 .edit {
     color: black;
     cursor: pointer;
+}
+.edit:hover{
+    background-color: rgb(115, 136, 142);
+    color: white;
 }
 
 .delete {
