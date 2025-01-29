@@ -5,6 +5,9 @@
     flex-wrap: wrap;
     border: 1px solid rgb(187, 185, 185);
     padding: 5px;
+    overflow: auto;
+    scrollbar-width: thin; /* Options: auto | thin | none */
+    scrollbar-color: #888 #f1f1f1; 
 }
 
 .createbutton {
@@ -17,6 +20,8 @@
     border: 1px solid wheat;
     padding: 10px;
     cursor: pointer;
+    position: absolute;
+    background-color: #555;
 }
 
 .plussign {

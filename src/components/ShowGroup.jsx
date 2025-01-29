@@ -52,7 +52,7 @@ function ShowGroup() {
     return (
         <div className={style.group_container}>
 
-            <div onClick={FormShowHide} className={style.createbutton} title="create group">
+            <div onClick={FormShowHide} className={style.createbutton} title="Create Group">
                 <span className={style.plussign}>+</span>
             </div>
             {
