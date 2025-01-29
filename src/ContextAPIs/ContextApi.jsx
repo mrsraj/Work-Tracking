@@ -8,13 +8,15 @@ function ContextProvider({ children }) {
     const [logIn, setLogin] = useState(localStorage.getItem('user_id'));
     const [cardId, setCardId] = useState()
     const [formShow, setFormShow] = useState(false);
+    const [idForDelete, setIdForDelete] = useState('');
 
     return (
         <MyContext.Provider
             value={{
                 setLogin, logIn,
                 cardId, setCardId,
-                formShow, setFormShow
+                formShow, setFormShow,
+                idForDelete, setIdForDelete,
             }}
         >
             {children}
