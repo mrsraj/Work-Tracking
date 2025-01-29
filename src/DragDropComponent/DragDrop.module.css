@@ -58,15 +58,18 @@
     font-size: large;
     cursor: pointer;
     padding: 2px;
-    border-radius: 5px;
+    border-radius: 50px;
 }
 
-.Item_del:hover {
-    background-color: rgb(190, 194, 193);
+.icon_btn {
+    position: fixed;
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.icon_btn{
-    position: absolute;
-    left: 155px;
-    /* top: 10px; */
+@media (max-width: 650px) {
+    .icon_btn {
+        width: 20%;
+    }
 }
