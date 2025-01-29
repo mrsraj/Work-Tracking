@@ -3,6 +3,7 @@ import axios from "axios";
 import style from './DragDrop.module.css';
 import TaskAddForm from "../components/Form";
 import CardIcon from "./CardIcons";
+import { useMyContext } from "../ContextAPIs/ContextApi";
 
 function DragDrop() {
 
@@ -17,6 +18,8 @@ function DragDrop() {
     });
 
     console.log("columns 2 = ", columns);
+
+    const { setIdForDelete } = useMyContext();
 
 
     // Fetch tasks from the backend when the component mounts
@@ -94,13 +97,18 @@ function DragDrop() {
     };
 
     function showCardDetails(id) {
-        console.log("Card id = ", id);
-
+        console.log("card-id", id);
+        setIdForDelete(id);
     }
 
     const handleShowCardIcons = (itemId) => {
         setClickedCardId((prevId) => (prevId === itemId ? null : itemId)); // Toggle visibility
-        setCardIcons(!cardIcons);
+        if (clickedCardId != itemId) {
+            setCardIcons(true);
+        }
+        else {
+            setCardIcons(!cardIcons);
+        }
     };
 
     return (
@@ -148,13 +156,16 @@ function DragDrop() {
                             onClick={() => showCardDetails(item.id)}
                         >
                             <button className={style.Item_del} onClick={(e) => {
-                                // e.stopPropagation(); // Prevent parent click handler
+                                e.stopPropagation(); // Prevent parent click handler
                                 handleShowCardIcons(item.id);
+                                showCardDetails(item.id)
                             }}>....</button>
 
                             {
                                 cardIcons && clickedCardId === item.id &&
-                                <CardIcon />
+                                <div className={style.icon_btn}>
+                                    <CardIcon />
+                                </div>
                             }
 
                             <h3>{item.title}</h3>
