@@ -5,15 +5,15 @@ import { useMyContext } from '../ContextAPIs/ContextApi';
 
 function Header() {
 
-    console.log('PostContext = ',useMyContext());
+    console.log('PostContext = ', useMyContext());
 
-    let {logIn, setLogin} = useMyContext()
+    let { logIn, setLogin } = useMyContext()
     console.log("logIn = ", logIn);
-    
+
     function handleLogout() {
         localStorage.removeItem('token');
         localStorage.removeItem('user_id');
-        setLogin(); 
+        setLogin();
         alert("Logout Successful.");
         window.location.href = '/'; // Redirects to the home page
     }
@@ -21,14 +21,16 @@ function Header() {
     return (
         <>
             <div className={style.header}>
-                <div>Task Management App</div>
-                <div className={style.login} ><a href="/showgroup" className={style.login_btn}>TeamSpace</a></div>
-                <div className={style.login} ><a href="/workpage" className={style.login_btn}>workpage</a></div>
-                {logIn ?
-                    <div className={style.logout} onClick={handleLogout}>LogOut</div>
-                    :
-                    <div className={style.login} ><a href="/login" className={style.login_btn}>LogIn</a></div>
-                }
+                <div className={style.logo}>Task Management App</div>
+                <div className={style.btn_container}>
+                    <div className={style.login} ><a href="/showgroup" className={style.login_btn}>TeamSpace</a></div>
+                    <div className={style.login} ><a href="/workpage" className={style.login_btn}>WorkPage</a></div>
+                    {logIn ?
+                        <div className={style.logout} onClick={handleLogout}>LogOut</div>
+                        :
+                        <div className={style.login} ><a href="/login" className={style.login_btn}>LogIn</a></div>
+                    }
+                </div>
 
             </div>
         </>
