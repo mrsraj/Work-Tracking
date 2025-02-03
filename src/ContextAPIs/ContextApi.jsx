@@ -9,10 +9,12 @@ function ContextProvider({ children }) {
     const [cardId, setCardId] = useState()
     const [formShow, setFormShow] = useState(false);
     const [idForDelete, setIdForDelete] = useState('');
+    const [formStatus, setFormStatus] = useState(false);
 
     return (
         <MyContext.Provider
             value={{
+                formStatus, setFormStatus,
                 setLogin, logIn,
                 cardId, setCardId,
                 formShow, setFormShow,
