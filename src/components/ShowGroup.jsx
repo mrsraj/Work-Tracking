@@ -8,7 +8,7 @@ function ShowGroup() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
 
-    const{formShow, setFormShow} = useMyContext()
+    const{formShow, setFormShow, formStatus} = useMyContext()
 
     function FormShowHide() {
         setFormShow(!formShow);
@@ -26,7 +26,6 @@ function ShowGroup() {
                 }
 
                 let data = await response.json();
-                console.log("LOG = ", data);
 
                 setData(data);
             } catch (err) {
@@ -35,7 +34,7 @@ function ShowGroup() {
         }
 
         fetchBoardData();
-    }, []);
+    }, [formStatus]);
 
     if (error) {
         return <div>Error: {error}</div>;

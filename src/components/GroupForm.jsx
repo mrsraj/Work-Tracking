@@ -3,12 +3,12 @@ import style from './GroupForm.module.css'; // Import the CSS file
 import { useMyContext } from '../ContextAPIs/ContextApi';
 
 const GroupAddForm = () => {
-
-    const{formShow, setFormShow} = useMyContext()
+    const { formShow, setFormShow ,formStatus, setFormStatus} = useMyContext()
 
     const [formData, setFormData] = useState({
-        groupname: '',
-        work: '',
+        name: "",
+        description: "",
+        created_by: localStorage.getItem('user_id')
     });
 
     const handleChanges = (e) => {
@@ -23,16 +23,32 @@ const GroupAddForm = () => {
         setFormShow(!formShow);
     }
 
-    const handleRegister = (e) => {
+    async function handleRegister(e) {
         e.preventDefault();
 
-        console.log("Form Data:", formData);
+        let res = await fetch('http://127.0.0.1:8000/api/addboard/', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if (res.statusText === "OK") {
+            setFormStatus(true)
+        }
+
+        setTimeout(() => {
+            setFormStatus(false)
+        }, 2000);
 
 
         setFormData({
-            groupname: '',
-            work: '',
+            name: "",
+            description: "",
+            created_by: localStorage.getItem('user_id'),
         });
+        
     };
 
     return (
@@ -45,7 +61,7 @@ const GroupAddForm = () => {
                     type="text"
                     placeholder="Group Name"
                     value={formData.groupname}
-                    name="groupname"
+                    name="name"
                     onChange={handleChanges}
                     required
                 />
@@ -54,11 +70,11 @@ const GroupAddForm = () => {
                     type="text"
                     placeholder="Work"
                     value={formData.work}
-                    name="work"
+                    name="description"
                     onChange={handleChanges}
                     required
                 />
-
+                {formStatus ? <div className={style.message}>Successfully Added</div> : ""}
                 <button type="submit">Add Group</button>
 
             </form>
