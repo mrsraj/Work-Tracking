@@ -45,8 +45,15 @@ function ShowGroup() {
         return <div>Loading...</div>;
     }
 
-    function AddMember() {
+    function AddMember(e) {
+        e.stopPropagation()
         alert("No Functionality")
+    }
+
+    function Getgrpid(id) {
+        localStorage.setItem("grp_id", id);
+        console.log("Set");
+        
     }
 
     return (
@@ -64,7 +71,7 @@ function ShowGroup() {
             {data ? (
                 data.boards
                     .map((item, id) => (
-                        <div className={style.card} key={id}>
+                        <div className={style.card} key={id} onClick={() => Getgrpid(item.id)}>
                             <span onClick={AddMember} className={style.icon}>...</span>
                             <h2>{item.name}</h2>
                             <p>{item.description}</p>
