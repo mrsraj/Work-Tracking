@@ -8,7 +8,7 @@ function ShowGroup() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
 
-    const{formShow, setFormShow, formStatus} = useMyContext()
+    const { formShow, setFormShow, formStatus } = useMyContext()
 
     function FormShowHide() {
         setFormShow(!formShow);
@@ -16,8 +16,9 @@ function ShowGroup() {
 
     useEffect(() => {
         async function fetchBoardData() {
+            let user_id = localStorage.getItem('user_id');
             try {
-                let response = await fetch('http://127.0.0.1:8000/api/getboard/', {
+                let response = await fetch(`http://127.0.0.1:8000/api/getboard/${user_id}/`, {
                     method: "GET",
                 });
 
