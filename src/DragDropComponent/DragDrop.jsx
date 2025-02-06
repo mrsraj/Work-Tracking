@@ -24,7 +24,10 @@ function DragDrop() {
 
     // Fetch tasks from the backend when the component mounts
     useEffect(() => {
-        axios.get('http://localhost:8000/api/tasks/')
+        let user_id = localStorage.getItem('user_id');
+        let grp_id = localStorage.getItem('grp_id');
+
+        axios.get(`http://localhost:8000/api/tasks/${user_id}/${grp_id}/`)
             .then((response) => {
                 setColumns(response.data);
             })
