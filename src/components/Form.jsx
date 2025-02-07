@@ -7,7 +7,8 @@ function TaskAddForm({ createNewItem }) {
         title: "",
         desc: "",
         column: "column1",
-        user: localStorage.getItem('user_id')
+        user: localStorage.getItem('user_id'),
+        bord_id : localStorage.getItem('grp_id'),
     });
 
     // Handle input changes
