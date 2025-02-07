@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import style from './Showgroup.module.css';
 import GroupAddForm from "./GroupForm";
 import { useMyContext } from "../ContextAPIs/ContextApi";
+import { useNavigate } from "react-router-dom";
+
 
 
 function ShowGroup() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
 
     const { formShow, setFormShow, formStatus } = useMyContext()
 
@@ -53,7 +56,7 @@ function ShowGroup() {
     function Getgrpid(id) {
         localStorage.setItem("grp_id", id);
         console.log("Set");
-        
+        navigate('/workpage');
     }
 
     return (
