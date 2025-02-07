@@ -7,6 +7,7 @@
     min-height: auto;
     max-height:50vh;
     overflow: auto;
+    padding-bottom:5px;
 }
 
 .nameInput {
